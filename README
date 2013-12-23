@@ -1,0 +1,122 @@
+
+////////////////////////////////////////////////////////////////
+//      													  //
+//      COP5615 Distributed Operating Systems - Project 1     //
+//															  //
+//                       BASIC PART                           //
+//															  //
+//                 by Yang Ou (UFID:2012-6327)                //
+//															  //
+////////////////////////////////////////////////////////////////
+
+1. Size of the work unit that results in best performance
+
+For "scala project1 1000000 4", the following table shows the relation
+between WORKUNIT, CPU TIME(SYS TIME + USER TIME) / REAL TIME and REAL TIME.
+
+WORKUNIT      CPU TIME/REAL TIME       REAL TIME
+-------------------------------------------------
+10			  1.850					   14.600s
+50			  1.819						8.295s
+100			  1.799					    7.096s
+500			  1.566						2.633s
+1000		  1.521						2.222s
+5000		  1.266						1.456s
+10000		  1.300						1.330s
+50000		  1.245						1.295s
+100000		  1.235						1.273s
+500000		  1.262						1.255s
+1000000		  1.134						1.362s
+
+For best REAL TIME, the WORKUNIT is expected to be 500000.
+
+For best CPU TIME/REAL TIME ratio, the WORKUNIT is expected to be 10 or less.
+
+2. The result of running "scala project1 1000000 4"
+
+$ scala project1 1000000 4
+Perfect Square Not Found!
+
+3. The running time for "scala project1 1000000 4"
+
+$ time scala project1 1000000 4
+Perfect Square Not Found!
+
+real   0m2.624s
+user   0m3.840s
+sys    0m0.324s
+
+(user time + sys time) / real time = 1.59
+
+4. The largest problem
+
+(1) The largest problem(number) my computer managed to solve is 1000000000 as shown below.
+
+$ time scala project1 1000000000 4
+Perfect Square Not Found!
+
+real 1m38.562s
+user 3m14.916s
+sys  0m0.216s
+
+(2) The largest problem I managed to solve
+
+For the basic part of the project, I have the problem that the running time is much longer than others'.
+Then I found that my program have divided the job to work unit of 1 and just throw them all to the router.
+In the case, one actor may get many work units to work. And this may have some overhead that one actor may
+receive and reply many times.
+
+Then I modified the program.I set the work unit by divide all sub-problems by number of workers so that every
+worker would have only one task to work. But the task may be a little bigger. In this way, the running time
+decreased.
+
+
+//////////////////////////////////////////////////////////////////////////
+//                           											//  
+//								BONUS PART		                        //
+//																		//
+//               By Xiang Xu 1695-3764 AND Yang Ou 20126327             //
+//																		//
+//////////////////////////////////////////////////////////////////////////
+
+We solved the problem with 1 server machine(Super Boss) and 8 remote machines(Boss and Workers).
+
+We use 'lin114-10.cise.ufl.edu' as the SERVER(Super Boss).
+
+The REMOTE CLIENTS(Boss and Workers) we used are as follows.
+'lin114-01.cise.ufl.edu'  'lin114-02.cise.ufl.edu'
+'lin114-03.cise.ufl.edu'  'lin114-04.cise.ufl.edu'
+'lin114-06.cise.ufl.edu'  'lin114-07.cise.ufl.edu'  
+'lin114-08.cise.ufl.edu'  'lin114-09.cise.ufl.edu'
+
+Our programs run based on scala sbt.
+8 file folders for clients and 1 file folders for Server must exactly match the machine that run them.
+Because the .conf file need to change when it is on different machines.
+
+Follow these steps to run our program:
+(1) For all 'lin114-(01,02,03,04,06,07,08,09).cise.ufl.edu' Terminals:
+    "cd" into the client folder that matches its name
+    run "sbt run"
+    choose the number that matches "RemoteBossApp"
+(2) On 'lin114-10.cise.ufl.edu' Terminal:
+    "cd" into the server folder
+    run "sbt run"
+    choose the number that matches "ServerApp"
+
+Then the clients will display the result(s) only for the part they work on.
+The server will display all results for the whole task.
+
+In this remote mode, N can be as large as possible until it reaches the maximum Long value allowed by the scala runtime.
+Below are some of the largest experiments results:
+
+N                K         Running Time
+-------------------------------------------------------------
+2,000,000,000    4         12.12sec
+1,000,000,000    4          5.31sec
+
+This is about 4 times faster than the single machine version.
+
+For required N(100000000) and K(20), there is no result and the running time is 3.86sec.
+
+This is the end. Thanks.
+

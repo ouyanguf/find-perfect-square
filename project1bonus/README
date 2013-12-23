@@ -1,0 +1,45 @@
+//////////////////////////////////////////////////////////////////////////
+//                             BONUS PART			       			    //
+//                  By Xiang Xu 16953764, Yang Ou 20126327              //
+//////////////////////////////////////////////////////////////////////////
+
+We solved the problem with 1 server machine(Super Boss) and 8 remote machines(Boss and Workers).
+
+We use 'lin114-10.cise.ufl.edu' as the SERVER(Super Boss).
+
+The REMOTE CLIENTS(Boss and Workers) we used are as follows.
+'lin114-01.cise.ufl.edu'  'lin114-02.cise.ufl.edu'
+'lin114-03.cise.ufl.edu'  'lin114-04.cise.ufl.edu'
+'lin114-06.cise.ufl.edu'  'lin114-07.cise.ufl.edu'  
+'lin114-08.cise.ufl.edu'  'lin114-09.cise.ufl.edu'
+
+Our programs run based on scala sbt.
+8 file folders for clients and 1 file folders for Server must exactly match the machine that run them.
+Because the .conf file need to change when it is on different machines.
+
+Follow these steps to run our program:
+(1) For all 'lin114-(01,02,03,04,06,07,08,09).cise.ufl.edu' Terminals:
+    "cd" into the client folder that matches its name
+    run "sbt run"
+    choose the number that matches "RemoteBossApp"
+(2) On 'lin114-10.cise.ufl.edu' Terminal:
+    "cd" into the server folder
+    run "sbt run"
+    choose the number that matches "ServerApp"
+
+Then the clients will display the result(s) only for the part they work on.
+The server will display all results for the whole task.
+
+In this remote mode, N can be as large as possible until it reaches the maximum Long value allowed by the scala runtime.
+Below are some of the largest experiments results:
+
+N                K         Running Time
+-------------------------------------------------------------
+2,000,000,000    4         12.12sec
+1,000,000,000    4          5.31sec
+
+This is about 4 times faster than the single machine version.
+
+For required N(100000000) and K(20), there is no result and the running time is 3.86sec.
+
+This is the end. Thanks.

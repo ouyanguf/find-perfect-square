@@ -1,0 +1,16 @@
+[0m[[0minfo[0m] [0mRunning RemoteBossApp [0m
+[0m[[0mdebug[0m] [0mStarting sandboxed run...[0m
+[0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
+[0m[[0mdebug[0m] [0m  Classpath:[0m
+[0m[[0mdebug[0m] [0m	/cise/homes/xuxu/ScalaWork/Project1BonusClient07/project1-remote/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0m	/cise/homes/xuxu/.sbt/boot/scala-2.10.2/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	/cise/homes/xuxu/.ivy2/cache/com.typesafe.akka/akka-actor_2.10/jars/akka-actor_2.10-2.2.1.jar[0m
+[0m[[0mdebug[0m] [0m	/cise/homes/xuxu/.ivy2/cache/com.typesafe/config/bundles/config-1.0.2.jar[0m
+[0m[[0mdebug[0m] [0m	/cise/homes/xuxu/.ivy2/cache/com.typesafe.akka/akka-remote_2.10/bundles/akka-remote_2.10-2.2.1.jar[0m
+[0m[[0mdebug[0m] [0m	/cise/homes/xuxu/.ivy2/cache/io.netty/netty/bundles/netty-3.6.6.Final.jar[0m
+[0m[[0mdebug[0m] [0m	/cise/homes/xuxu/.ivy2/cache/com.google.protobuf/protobuf-java/jars/protobuf-java-2.4.1.jar[0m
+[0m[[0mdebug[0m] [0m	/cise/homes/xuxu/.ivy2/cache/org.uncommons.maths/uncommons-maths/jars/uncommons-maths-1.2.2a.jar[0m
+[0m[[0mdebug[0m] [0m	/cise/homes/xuxu/.ivy2/cache/com.typesafe.akka/akka-kernel_2.10/jars/akka-kernel_2.10-2.2.1.jar[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main to exit[0m
+[0m[[0mdebug[0m] [0m	Thread run-main exited.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread New I/O worker #5 to exit[0m

@@ -1,0 +1,71 @@
+
+////////////////////////////////////////////////////////////////
+//      													  //
+//      COP5615 Distributed Operating Systems - Project 1     //
+//															  //
+//                       BASIC PART                           //
+//															  //
+//                 by Yang Ou (UFID:2012-6327)                //
+//															  //
+////////////////////////////////////////////////////////////////
+
+1. Size of the work unit that results in best performance
+
+For "scala project1 1000000 4", the following table shows the relation
+between WORKUNIT, CPU TIME(SYS TIME + USER TIME) / REAL TIME and REAL TIME.
+
+WORKUNIT      CPU TIME/REAL TIME       REAL TIME
+-------------------------------------------------
+10			  1.850					   14.600s
+50			  1.819						8.295s
+100			  1.799					    7.096s
+500			  1.566						2.633s
+1000		  1.521						2.222s
+5000		  1.266						1.456s
+10000		  1.300						1.330s
+50000		  1.245						1.295s
+100000		  1.235						1.273s
+500000		  1.262						1.255s
+1000000		  1.134						1.362s
+
+For best REAL TIME, the WORKUNIT is expected to be 500000.
+
+For best CPU TIME/REAL TIME ratio, the WORKUNIT is expected to be 10 or less.
+
+2. The result of running "scala project1 1000000 4"
+
+$ scala project1 1000000 4
+Perfect Square Not Found!
+
+3. The running time for "scala project1 1000000 4"
+
+$ time scala project1 1000000 4
+Perfect Square Not Found!
+
+real   0m2.624s
+user   0m3.840s
+sys    0m0.324s
+
+(user time + sys time) / real time = 1.59
+
+4. The largest problem
+
+(1) The largest problem(number) my computer managed to solve is 1000000000 as shown below.
+
+$ time scala project1 1000000000 4
+Perfect Square Not Found!
+
+real 1m38.562s
+user 3m14.916s
+sys  0m0.216s
+
+(2) The largest problem I managed to solve
+
+For the basic part of the project, I have the problem that the running time is much longer than others'.
+Then I found that my program have divided the job to work unit of 1 and just throw them all to the router.
+In the case, one actor may get many work units to work. And this may have some overhead that one actor may
+receive and reply many times.
+
+Then I modified the program.I set the work unit by divide all sub-problems by number of workers so that every
+worker would have only one task to work. But the task may be a little bigger. In this way, the running time
+decreased.
